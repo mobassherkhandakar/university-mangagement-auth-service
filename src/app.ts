@@ -4,7 +4,7 @@ const app: Application = express()
 
 app.use(cors())
 
-// parser
+// parsers
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
