@@ -9,6 +9,8 @@
   "author": "Mobassher Khandakar",
   "license": "ISC",
   "devDependencies": {
+    "@types/express": "^4.17.20",
+    "ts-node-dev": "^2.0.0",
     "typescript": "^5.2.2"
   },
   "dependencies": {
