@@ -6,7 +6,6 @@ const lastUserId = async () => {
     .lean()
   return lastId?.id
 }
-console.log(lastUserId())
 export const generateUserId = async () => {
   const currentId = (await lastUserId()) || (0).toString().padStart(5, '0')
   const incrementalId = (parseInt(currentId) + 1).toString().padStart(5, '0')
