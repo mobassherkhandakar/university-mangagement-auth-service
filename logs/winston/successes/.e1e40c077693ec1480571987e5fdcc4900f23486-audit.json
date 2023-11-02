@@ -9,6 +9,16 @@
             "date": 1698864623296,
             "name": "C:\\Projects\\Privete\\university-management-auth-service\\logs\\winston\\successes\\phu-2023-02-11-00-success.log",
             "hash": "020f475a4f7ad7f61b7162c2baa4ec49990055f4a62753c0f5e240d95eef5952"
+        },
+        {
+            "date": 1698900216609,
+            "name": "C:\\Projects\\Privete\\university-management-auth-service\\logs\\winston\\successes\\phu-2023-02-11-10-success.log",
+            "hash": "789eab897e0e62cc78aa059f8d1ca28355d1c4660e4b38485a621f93e18a9257"
+        },
+        {
+            "date": 1698933705747,
+            "name": "C:\\Projects\\Privete\\university-management-auth-service\\logs\\winston\\successes\\phu-2023-02-11-20-success.log",
+            "hash": "472eb7b49cbe8b604391551614f38eeba20a9c64533676dbc646be3d2e6a3800"
         }
     ],
     "hashType": "sha256"
