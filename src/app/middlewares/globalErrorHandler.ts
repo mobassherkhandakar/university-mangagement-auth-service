@@ -1,8 +1,8 @@
-/* eslint-disable prefer-const */
-/* eslint-disable no-unused-vars */
 import { NextFunction, Request, Response } from 'express'
 import config from '../../config'
 import { IGenericErrorMessage } from '../interface/error'
+import handleValidationError from '../../errors/handleValidationError'
+import mongoose from 'mongoose'
 
 const globalErrorHandler = (
   error: Error,
@@ -13,9 +13,13 @@ const globalErrorHandler = (
   let statusCode = 500
   let message = 'something went wrong !'
   let errorMessage: IGenericErrorMessage[] = []
-
-  if (error.name == 'ValidationError') {
-    // const simplifiedError = handleValidationError(error)
+  if (error.name === 'ValidationError') {
+    const simplifiedError = handleValidationError(
+      error as mongoose.Error.ValidationError,
+    )
+    statusCode = simplifiedError.statusCode
+    message = simplifiedError.message
+    errorMessage = simplifiedError.errorMessages
   }
 
   res.status(statusCode).json({
