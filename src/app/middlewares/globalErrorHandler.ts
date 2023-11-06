@@ -2,10 +2,10 @@
 /* eslint-disable no-unused-expressions */
 import { ErrorRequestHandler, NextFunction, Request, Response } from 'express'
 import config from '../../config'
-import { IGenericErrorMessage } from '../interface/error'
-import handleValidationError from '../../errors/handleValidationError'
-import { errorLogger } from '../../shared/logger'
 import ApiError from '../../errors/ApiError'
+import handleValidationError from '../../errors/handleValidationError'
+import { IGenericErrorMessage } from '../interface/error'
+import { errorLogger } from '../../shared/logger'
 
 const globalErrorHandler: ErrorRequestHandler = (
   error,
@@ -13,13 +13,13 @@ const globalErrorHandler: ErrorRequestHandler = (
   res: Response,
   next: NextFunction,
 ) => {
-  let statusCode = 500
-  let message = 'Something went wrong'
-  let errorMessages: IGenericErrorMessage[] = []
-
   config.env === 'development'
     ? console.log(`🐱‍🏍 globalErrorHandler ~~`, error)
     : errorLogger.error(`🐱‍🏍 globalErrorHandler ~~`, error)
+
+  let statusCode = 500
+  let message = 'Something went wrong'
+  let errorMessages: IGenericErrorMessage[] = []
 
   if (error?.name === 'ValidationError') {
     const simplifiedError = handleValidationError(error)
@@ -27,7 +27,7 @@ const globalErrorHandler: ErrorRequestHandler = (
     message = simplifiedError.message
     errorMessages = simplifiedError.errorMessages
   } else if (error instanceof ApiError) {
-    message = error.message
+    message = error?.message
     errorMessages = error?.message
       ? [
           {

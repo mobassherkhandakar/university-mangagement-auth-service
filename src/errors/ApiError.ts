@@ -1,9 +1,9 @@
 class ApiError extends Error {
   statusCode: number
-  constructor(statusCode: number, massage: string, stack: string | undefined) {
-    super(massage)
+
+  constructor(statusCode: number, message: string | undefined, stack = '') {
+    super(message)
     this.statusCode = statusCode
-    this.message = massage
     if (stack) {
       this.stack = stack
     } else {
