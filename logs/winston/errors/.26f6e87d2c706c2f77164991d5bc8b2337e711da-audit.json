@@ -39,6 +39,16 @@
             "date": 1699637362777,
             "name": "C:\\Projects\\Privete\\university-management-auth-service\\logs\\winston\\errors\\phu-2023-10-11-23-error.log",
             "hash": "a09d33bfcc98e20cb3e222697ebb98f37616512a866d211a438e790d0fdbf456"
+        },
+        {
+            "date": 1699678255022,
+            "name": "C:\\Projects\\Privete\\university-management-auth-service\\logs\\winston\\errors\\phu-2023-11-11-10-error.log",
+            "hash": "859f014038f4c2e6e45b993b44b9a80d42bb568fb9e924c496d99bded6159a03"
+        },
+        {
+            "date": 1699678819098,
+            "name": "C:\\Projects\\Privete\\university-management-auth-service\\logs\\winston\\errors\\phu-2023-11-11-11-error.log",
+            "hash": "b303fe8d759f2a73066d1f644d3a67b6a7b4bbe70fa4ea555be354217fe0406e"
         }
     ],
     "hashType": "sha256"
