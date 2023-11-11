@@ -1,4 +1,3 @@
-import status from 'http-status'
 import { Schema, model } from 'mongoose'
 import ApiError from '../../../errors/ApiError'
 import {
@@ -7,6 +6,7 @@ import {
   academicSemesterTitle,
 } from './academicSemester.constants'
 import { IAcademicSemester } from './academicSemester.interface'
+import httpStatus from 'http-status'
 
 const academicSemesterSchema = new Schema<IAcademicSemester>(
   {
@@ -40,14 +40,15 @@ const academicSemesterSchema = new Schema<IAcademicSemester>(
   },
 )
 
-academicSemesterSchema.pre('save', async function () {
-  const exist = await AcademicSemester.findOne({
+academicSemesterSchema.pre('save', async function (next) {
+  const exIst = await AcademicSemester.findOne({
     title: this.title,
     year: this.year,
   })
-  if (exist) {
-    throw new ApiError(status.CONFLICT, 'This year is already exist')
+  if (exIst) {
+    throw new ApiError(httpStatus.CONFLICT, 'This year is already exist')
   }
+  next()
 })
 export const AcademicSemester = model<IAcademicSemester>(
   'AcademicSemester',

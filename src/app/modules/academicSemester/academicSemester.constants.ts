@@ -2,6 +2,7 @@ import {
   IAcademicSemesterCode,
   IAcademicSemesterMonth,
   IAcademicSemesterTitle,
+  academicSemesterCodeMapper,
 } from './academicSemester.interface'
 
 export const academicSemesterMonth: IAcademicSemesterMonth[] = [
@@ -23,4 +24,10 @@ export const academicSemesterTitle: IAcademicSemesterTitle[] = [
   'Summer',
   'Fall',
 ]
+
+export const academicSemesterTitleCodeMapper: academicSemesterCodeMapper = {
+  Autumn: '01',
+  Summer: '02',
+  Fall: '03',
+}
 export const academicSemesterCode: IAcademicSemesterCode[] = ['01', '02', '03']
