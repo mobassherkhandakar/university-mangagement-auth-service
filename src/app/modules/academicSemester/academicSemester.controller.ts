@@ -1,10 +1,10 @@
 import { NextFunction, Request, Response } from 'express'
 import httpStatus from 'http-status'
+import { IPaginationOptions } from '../../../interface/pagination'
 import catchAsync from '../../../shared/catchAsync'
+import pick from '../../../shared/pick'
 import sendResponse from '../../../shared/sendResponse'
 import { academicSemesterService } from './academicSemester.service'
-import pick from '../../../shared/pick'
-import { IPaginationOptions } from '../../../interface/pagination'
 
 const createSemester = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
@@ -35,7 +35,7 @@ const getAllSemester = catchAsync(
       statusCode: httpStatus.OK,
       success: true,
       message: 'User get all Successfully done',
-      data: result,
+      data: result.meta,
     })
     next()
   },
