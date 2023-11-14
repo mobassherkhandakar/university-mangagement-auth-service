@@ -4,6 +4,7 @@ import { IPaginationOptions } from '../../../interface/pagination'
 import catchAsync from '../../../shared/catchAsync'
 import pick from '../../../shared/pick'
 import sendResponse from '../../../shared/sendResponse'
+import { IAcademicSemester } from './academicSemester.interface'
 import { academicSemesterService } from './academicSemester.service'
 
 const createSemester = catchAsync(
@@ -31,11 +32,12 @@ const getAllSemester = catchAsync(
 
     const result =
       await academicSemesterService.getAllSemester(paginationOption)
-    sendResponse(res, {
+    sendResponse<IAcademicSemester[]>(res, {
       statusCode: httpStatus.OK,
       success: true,
       message: 'User get all Successfully done',
-      data: result.meta,
+      meta: result.meta,
+      data: result.data,
     })
     next()
   },
