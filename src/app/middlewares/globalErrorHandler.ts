@@ -6,10 +6,10 @@ import config from '../../config'
 import ApiError from '../../errors/ApiError'
 import handleValidationError from '../../errors/handleValidationError'
 
-import { errorLogger } from '../../shared/logger'
-import { IGenericErrorMessage } from '../interface/error'
 import { ZodError } from 'zod'
 import handleZodError from '../../errors/handelZodError'
+import { IGenericErrorMessage } from '../../interface/error'
+import { errorLogger } from '../../shared/logger'
 
 const globalErrorHandler: ErrorRequestHandler = (
   error,

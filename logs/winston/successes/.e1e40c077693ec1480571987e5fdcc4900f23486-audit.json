@@ -64,6 +64,36 @@
             "date": 1699803526387,
             "name": "C:\\Projects\\Privete\\university-management-auth-service\\logs\\winston\\successes\\phu-2023-12-11-21-success.log",
             "hash": "083065134bb14b15b523f02c32343061eabe8cdb462ad9639a383cf3f2b38f8f"
+        },
+        {
+            "date": 1699854914802,
+            "name": "C:\\Projects\\Privete\\university-management-auth-service\\logs\\winston\\successes\\phu-2023-13-11-11-success.log",
+            "hash": "ec7f7bc7f4697c38df074bc2f813727c0717e3f929afbae53f0e72edc1730ce0"
+        },
+        {
+            "date": 1699856115110,
+            "name": "C:\\Projects\\Privete\\university-management-auth-service\\logs\\winston\\successes\\phu-2023-13-11-12-success.log",
+            "hash": "a1050cf6b2bfc4d637709c904af4f4879167e7ff7ca450beb3451c65ed49c14a"
+        },
+        {
+            "date": 1699880378593,
+            "name": "C:\\Projects\\Privete\\university-management-auth-service\\logs\\winston\\successes\\phu-2023-13-11-18-success.log",
+            "hash": "8c8895bb5bd6eb10f223411054ceff94037cf6c03ba471c82a4423b2f22a5586"
+        },
+        {
+            "date": 1699880408608,
+            "name": "C:\\Projects\\Privete\\university-management-auth-service\\logs\\winston\\successes\\phu-2023-13-11-19-success.log",
+            "hash": "4da0e260475e34c72188b703d9aa2e3cee927619f3e1d1346ba735fedd3f5a05"
+        },
+        {
+            "date": 1699889738255,
+            "name": "C:\\Projects\\Privete\\university-management-auth-service\\logs\\winston\\successes\\phu-2023-13-11-21-success.log",
+            "hash": "b0822216fdaf083b8985fe7685434fee988e191b39dc6b032897858503c3981b"
+        },
+        {
+            "date": 1699895935642,
+            "name": "C:\\Projects\\Privete\\university-management-auth-service\\logs\\winston\\successes\\phu-2023-13-11-23-success.log",
+            "hash": "ec80f40fe990805208f5ffc50fc6c9a85c38101f3e988502931578bff3bada1b"
         }
     ],
     "hashType": "sha256"
