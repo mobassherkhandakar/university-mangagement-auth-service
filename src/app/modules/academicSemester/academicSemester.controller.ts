@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from 'express'
 import httpStatus from 'http-status'
+import { paginationSortFiled } from '../../../constants/pagination'
 import { IPaginationOptions } from '../../../interface/pagination'
 import catchAsync from '../../../shared/catchAsync'
 import pick from '../../../shared/pick'
@@ -24,14 +25,16 @@ const createSemester = catchAsync(
 
 const getAllSemester = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
-    const paginationOption: IPaginationOptions = pick(req.query, [
-      'page',
-      'limit',
-      'sortBy',
-    ])
+    const paginationOption: IPaginationOptions = pick(
+      req.query,
+      paginationSortFiled,
+    )
+    const filters = pick(req.query, ['searchTerm'])
 
-    const result =
-      await academicSemesterService.getAllSemester(paginationOption)
+    const result = await academicSemesterService.getAllSemester(
+      filters,
+      paginationOption,
+    )
     sendResponse<IAcademicSemester[]>(res, {
       statusCode: httpStatus.OK,
       success: true,
