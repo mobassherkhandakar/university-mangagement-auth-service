@@ -27,18 +27,30 @@ const getAllSemester = async (
   const { skip, page, limit, sortBy, sortOrder } =
     paginationHelper.calculatePagination(paginationOption)
   const { searchTerm } = filters
-  const andCondition = [
-    {
-      $or: [
-        {
-          title: {
-            $regex: searchTerm,
-            $options: 'i',
-          },
+  const academicSemesterSearchAbleField = ['title', 'code']
+  const andCondition = []
+  if (searchTerm) {
+    andCondition.push({
+      $or: academicSemesterSearchAbleField.map(field => ({
+        [field]: {
+          $regex: searchTerm,
+          $options: 'i',
         },
-      ],
-    },
-  ]
+      })),
+    })
+  }
+  // const andCondition = [
+  //   {
+  //     $or: [
+  //       {
+  //         title: {
+  //           $regex: searchTerm,
+  //           $options: 'i',
+  //         },
+  //       },
+  //     ],
+  //   },
+  // ]
 
   const whereCondition: { [key: string]: SortOrder } = {}
   if (sortBy && sortOrder) {

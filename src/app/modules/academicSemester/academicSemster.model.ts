@@ -1,3 +1,4 @@
+import httpStatus from 'http-status'
 import { Schema, model } from 'mongoose'
 import ApiError from '../../../errors/ApiError'
 import {
@@ -6,7 +7,6 @@ import {
   academicSemesterTitle,
 } from './academicSemester.constants'
 import { IAcademicSemester } from './academicSemester.interface'
-import httpStatus from 'http-status'
 
 const academicSemesterSchema = new Schema<IAcademicSemester>(
   {
