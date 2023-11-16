@@ -26,7 +26,7 @@ const getAllSemester = async (
 ): Promise<IGenericResponse<IAcademicSemester[]>> => {
   const { skip, page, limit, sortBy, sortOrder } =
     paginationHelper.calculatePagination(paginationOption)
-  const { searchTerm } = filters
+  const { searchTerm, ...filterData } = filters
   const academicSemesterSearchAbleField = ['title', 'code']
   const andCondition = []
   if (searchTerm) {
@@ -36,6 +36,13 @@ const getAllSemester = async (
           $regex: searchTerm,
           $options: 'i',
         },
+      })),
+    })
+  }
+  if (Object.keys(filterData).length) {
+    andCondition.push({
+      $and: Object.entries(filterData).map(([field, value]) => ({
+        [field]: value,
       })),
     })
   }
