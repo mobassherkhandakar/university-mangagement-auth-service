@@ -17,7 +17,7 @@ export type IAcademicSemesterCode = '01' | '02' | '03'
 export type IAcademicSemesterTitle = 'Autumn' | 'Summer' | 'Fall'
 export type IAcademicSemester = {
   title: IAcademicSemesterMonth
-  year: number
+  year: string
   code: IAcademicSemesterCode
   startMonth: IAcademicSemesterMonth
   endMonth: IAcademicSemesterMonth
