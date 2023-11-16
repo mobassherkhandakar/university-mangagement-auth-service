@@ -13,6 +13,8 @@ app.use(express.urlencoded({ extended: true }))
 
 //Router
 app.use('/api/v1/', router)
+// hello how are you
+// bainchyud
 
 //Not found
 app.use((req: Request, res: Response, next: NextFunction) => {
