@@ -28,5 +28,5 @@ export type academicSemesterCodeMapper = {
   [key: string]: string
 }
 export type IAcademicDepartmentFilters = {
-  searchTerm: string
+  searchTerm?: string
 }
