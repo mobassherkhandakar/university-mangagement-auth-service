@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 /* eslint-disable no-unused-expressions */
-import { ErrorRequestHandler, NextFunction, Request, Response } from 'express'
+import { ErrorRequestHandler, Request, Response } from 'express'
 import { Error } from 'mongoose'
 import config from '../../config'
 import ApiError from '../../errors/ApiError'
@@ -8,6 +8,7 @@ import handleValidationError from '../../errors/handleValidationError'
 
 import { ZodError } from 'zod'
 import handleZodError from '../../errors/handelZodError'
+import handleCastError from '../../errors/handleCastError'
 import { IGenericErrorMessage } from '../../interface/error'
 import { logger } from '../../shared/logger'
 
@@ -15,7 +16,6 @@ const globalErrorHandler: ErrorRequestHandler = (
   error,
   req: Request,
   res: Response,
-  next: NextFunction,
 ) => {
   config.env === 'development'
     ? console.log(`🐱‍🏍 globalErrorHandler ~~`, error)
@@ -27,6 +27,11 @@ const globalErrorHandler: ErrorRequestHandler = (
 
   if (error?.name === 'ValidationError') {
     const simplifiedError = handleValidationError(error)
+    statusCode = simplifiedError.statusCode
+    message = simplifiedError.message
+    errorMessages = simplifiedError.errorMessages
+  } else if (error?.name === 'CastError') {
+    const simplifiedError = handleCastError(error)
     statusCode = simplifiedError.statusCode
     message = simplifiedError.message
     errorMessages = simplifiedError.errorMessages
@@ -64,8 +69,6 @@ const globalErrorHandler: ErrorRequestHandler = (
     errorMessages,
     stack: config.env !== 'production' ? error?.stack : undefined,
   })
-
-  next()
 }
 
 export default globalErrorHandler

@@ -3,7 +3,10 @@ import ApiError from '../../../errors/ApiError'
 import { paginationHelper } from '../../../helpers/paginationHelper'
 import { IGenericResponse } from '../../../interface/common'
 import { IPaginationOptions } from '../../../interface/pagination'
-import { academicSemesterTitleCodeMapper } from './academicSemester.constants'
+import {
+  academicSemesterSearchAbleField,
+  academicSemesterTitleCodeMapper,
+} from './academicSemester.constants'
 import {
   IAcademicDepartmentFilters,
   IAcademicSemester,
@@ -27,8 +30,9 @@ const getAllSemester = async (
   const { skip, page, limit, sortBy, sortOrder } =
     paginationHelper.calculatePagination(paginationOption)
   const { searchTerm, ...filterData } = filters
-  const academicSemesterSearchAbleField = ['title', 'code']
+
   const andCondition = []
+
   if (searchTerm) {
     andCondition.push({
       $or: academicSemesterSearchAbleField.map(field => ({
@@ -58,13 +62,14 @@ const getAllSemester = async (
   //     ],
   //   },
   // ]
+  const whereCondition = andCondition.length > 0 ? { $and: andCondition } : {}
 
-  const whereCondition: { [key: string]: SortOrder } = {}
+  const sortCondition: { [key: string]: SortOrder } = {}
   if (sortBy && sortOrder) {
-    whereCondition[sortBy] = sortOrder
+    sortCondition[sortBy] = sortOrder
   }
-  const result = await AcademicSemester.find({ $and: andCondition })
-    .sort(whereCondition)
+  const result = await AcademicSemester.find(whereCondition)
+    .sort(sortCondition)
     .skip(skip)
     .limit(limit)
   const total = await AcademicSemester.countDocuments()
@@ -77,7 +82,12 @@ const getAllSemester = async (
     data: result,
   }
 }
+const getSingleSemester = async (id: string) => {
+  const result = await AcademicSemester.findById(id)
+  return result
+}
 export const academicSemesterService = {
   createSemester,
   getAllSemester,
+  getSingleSemester,
 }

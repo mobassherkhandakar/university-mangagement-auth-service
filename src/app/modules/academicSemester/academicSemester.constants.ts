@@ -31,3 +31,10 @@ export const academicSemesterTitleCodeMapper: academicSemesterCodeMapper = {
   Fall: '03',
 }
 export const academicSemesterCode: IAcademicSemesterCode[] = ['01', '02', '03']
+export const academicSemesterSearchAbleField = ['title', 'code']
+export const academicSemesterFilterAbleFields = [
+  'searchTerm',
+  'title',
+  'code',
+  'year',
+]
