@@ -63,7 +63,6 @@ const getAllFaculty = async (
 const getSingleFaculty = async (
   id: string,
 ): Promise<IAcademicFaculty | null> => {
-  console.log(id)
   const result = await AcademicFaculty.findById(id)
   return result
 }
