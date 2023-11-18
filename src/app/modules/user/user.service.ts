@@ -12,7 +12,7 @@ import { generateStudentId } from './user.utils'
 const createStudent = async (
   student: IStudent,
   user: IUser,
-): Promise<IUser> => {
+): Promise<IUser | null> => {
   const academicSemester = await AcademicSemester.findById(
     student.academicSemester,
   )
@@ -48,7 +48,7 @@ const createStudent = async (
     throw error
   }
   if (userAllData) {
-    await User.findOne({ id: userAllData.id }).populate({
+    userAllData = await User.findOne({ id: userAllData.id }).populate({
       path: 'student',
       populate: [
         {
