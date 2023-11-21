@@ -40,6 +40,9 @@ const getAllStudent = async (
   }
 
   const result = await Student.find(whereCondition)
+    .populate('academicFaculty')
+    .populate('academicDepartment')
+    .populate('academicSemester')
     .sort(sortCondition)
     .skip(skip)
     .limit(limit)
