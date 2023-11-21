@@ -13,13 +13,13 @@ const lastStudentId = async (): Promise<string | undefined> => {
   return lastStudent?.id ? lastStudent.id.substring(4) : undefined
 }
 export const generateStudentId = async (
-  academicSemester: IAcademicSemester,
+  academicSemester: IAcademicSemester | null,
 ): Promise<string> => {
   const currentId = (await lastStudentId()) || (0).toString().padStart(5, '0')
   let incrementalId = (parseInt(currentId) + 1).toString().padStart(5, '0')
-  incrementalId = `${academicSemester.year.substring(2)}${
-    academicSemester.code
-  }${incrementalId}`
+  incrementalId = `${academicSemester?.year.substring(
+    2,
+  )}${academicSemester?.code}${incrementalId}`
   return incrementalId
 }
 const getLastFacultyId = async (): Promise<string | undefined> => {
