@@ -1,3 +1,7 @@
+import { Model, Types } from 'mongoose'
+import { IAcademicDepartment } from '../academicDepartment/academicDepartment.interface'
+import { IAcademicFaculty } from '../academicFaculty/academicFaculty.interface'
+
 export type UserName = {
   firstName: string
   middleName: string
@@ -6,14 +10,19 @@ export type UserName = {
 export type IFaculty = {
   id: string
   name: UserName
-  gender: 'male' | 'female'
-  dateOfBirth: string
+  profileImage: string
+  dateOfBirth?: string
   email: string
   contactNo: string
   emergencyContactNo: string
-  presentAddress: string
-  bloodGroup: 'A+' | 'A-' | 'B+' | 'B-' | 'AB+' | 'AB-' | 'O+' | 'O-'
+  gender?: 'male' | 'female'
+  permanentAddress?: string
+  presentAddress?: string
+  bloodGroup?: 'A+' | 'A-' | 'B+' | 'B-' | 'AB+' | 'AB-' | 'O+' | 'O-'
+
+  academicDepartment: Types.ObjectId | IAcademicDepartment
+  academicFaculty: Types.ObjectId | IAcademicFaculty
   designation: string
-  academicDepartment: string
-  academicFaculty: string
 }
+
+export type IFacultyModel = Model<IFaculty, Record<string, unknown>>
