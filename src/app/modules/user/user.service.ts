@@ -20,7 +20,7 @@ const createStudent = async (
   user.role = 'student'
   //set password
   if (!user.password) {
-    user.password = config.default_user_password as string
+    user.password = config.default_student_password as string
   }
 
   const session = await mongoose.startSession()

@@ -1,14 +1,16 @@
-"use strict";
+'use strict'
 // /* eslint-disable no-undef */
 // import path from 'path'
 // import { createLogger, format, transports } from 'winston'
 // import DailyRotateFile from 'winston-daily-rotate-file'
 // const { combine, timestamp, label, printf } = format
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.logger = void 0;
+var __importDefault =
+  (this && this.__importDefault) ||
+  function (mod) {
+    return mod && mod.__esModule ? mod : { default: mod }
+  }
+Object.defineProperty(exports, '__esModule', { value: true })
+exports.logger = void 0
 // //Customm Log Format
 // const myFormat = printf(({ level, message, label, timestamp }) => {
 //   const date = new Date(timestamp)
@@ -59,20 +61,26 @@ exports.logger = void 0;
 // })
 // export { logger, errorLogger }
 //!New logger versions
-const winston_1 = __importDefault(require("winston"));
-require("winston-mongodb");
+const winston_1 = __importDefault(require('winston'))
+require('winston-mongodb')
 const MongoTransport = new winston_1.default.transports.MongoDB({
-    db: process.env['DATABASE_URL'],
-    collection: 'logs',
-    options: { useUnifiedTopology: true },
-    format: winston_1.default.format.combine(winston_1.default.format.timestamp(), winston_1.default.format.json()),
-});
+  db: process.env['DATABASE_URL'],
+  collection: 'logs',
+  options: { useUnifiedTopology: true },
+  format: winston_1.default.format.combine(
+    winston_1.default.format.timestamp(),
+    winston_1.default.format.json(),
+  ),
+})
 const ConsoleTransport = new winston_1.default.transports.Console({
-    format: winston_1.default.format.combine(winston_1.default.format.colorize(), winston_1.default.format.simple()),
-});
+  format: winston_1.default.format.combine(
+    winston_1.default.format.colorize(),
+    winston_1.default.format.simple(),
+  ),
+})
 exports.logger = winston_1.default.createLogger({
-    transports: [ConsoleTransport, MongoTransport],
-});
+  transports: [ConsoleTransport, MongoTransport],
+})
 // if (process.env.NODE_ENV !== 'production') {
 //   logger.remove(MongoTransport);
 // }
